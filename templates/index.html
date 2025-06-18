@@ -52,40 +52,50 @@
         </div>
     </div>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section (Carousel) -->
     <div class="bg-light py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">What Our Users Say</h2>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <div class="p-4 bg-white border rounded shadow-sm">
-                        <img src="{{ url_for('static', filename='avatars/Sarah.png') }}" class="rounded-circle mb-3" alt="Sarah's Avatar" style="max-width: 80px; aspect-ratio: 1 / 1; object-fit: cover;">
-                        <p class="fst-italic">“This platform made it super easy to compare options. I found my dream car in two days!”</p>
-                        <div class="mb-2 text-warning" style="font-size: 1.2rem;">★★★★★</div>
-                        <h5 class="mt-2 mb-0">Sarah L.</h5>
-                        <small class="text-muted">Philadelphia, PA</small>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 bg-white border rounded shadow-sm">
-                        <img src="{{ url_for('static', filename='avatars/Jason.png') }}" class="rounded-circle mb-3" alt="Jason's Avatar" style="max-width: 80px; aspect-ratio: 1 / 1; object-fit: cover;">
-                        <p class="fst-italic">“I was amazed by the recommendations—it showed me cars I never thought to consider.”</p>
-                        <div class="mb-2 text-warning" style="font-size: 1.2rem;">★★★★★</div>
-                        <h5 class="mt-2 mb-0">Jason M.</h5>
-                        <small class="text-muted">Austin, TX</small>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 bg-white border rounded shadow-sm">
-                        <img src="{{ url_for('static', filename='avatars/Priya.png') }}" class="rounded-circle mb-3" alt="Priya's Avatar" style="max-width: 80px; aspect-ratio: 1 / 1; object-fit: cover;">
-                        <p class="fst-italic">“Simple, fast, and beautiful interface. I sold my old car and bought a better one the same week!”</p>
-                        <div class="mb-2 text-warning" style="font-size: 1.2rem;">★★★★★</div>
-                        <h5 class="mt-2 mb-0">Priya K.</h5>
-                        <small class="text-muted">San Jose, CA</small>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="text-center mb-5">What Our Users Say</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+              <div class="p-4 bg-white border rounded shadow-sm mx-auto" style="max-width: 600px;">
+                <img src="{{ url_for('static', filename='avatars/Sarah.png') }}" class="rounded-circle mb-3" alt="Sarah's Avatar" style="max-width: 80px; aspect-ratio: 1 / 1; object-fit: cover;">
+                <p class="fst-italic">“This platform made it super easy to compare options. I found my dream car in two days!”</p>
+                <div class="mb-2 text-warning" style="font-size: 1.2rem;">★★★★★</div>
+                <h5 class="mt-2 mb-0">Sarah L.</h5>
+                <small class="text-muted">Philadelphia, PA</small>
+              </div>
             </div>
+            <div class="carousel-item">
+              <div class="p-4 bg-white border rounded shadow-sm mx-auto" style="max-width: 600px;">
+                <img src="{{ url_for('static', filename='avatars/Jason.png') }}" class="rounded-circle mb-3" alt="Jason's Avatar" style="max-width: 80px; aspect-ratio: 1 / 1; object-fit: cover;">
+                <p class="fst-italic">“I was amazed by the recommendations—it showed me cars I never thought to consider.”</p>
+                <div class="mb-2 text-warning" style="font-size: 1.2rem;">★★★★★</div>
+                <h5 class="mt-2 mb-0">Jason M.</h5>
+                <small class="text-muted">Austin, TX</small>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="p-4 bg-white border rounded shadow-sm mx-auto" style="max-width: 600px;">
+                <img src="{{ url_for('static', filename='avatars/Priya.png') }}" class="rounded-circle mb-3" alt="Priya's Avatar" style="max-width: 80px; aspect-ratio: 1 / 1; object-fit: cover;">
+                <p class="fst-italic">“Simple, fast, and beautiful interface. I sold my old car and bought a better one the same week!”</p>
+                <div class="mb-2 text-warning" style="font-size: 1.2rem;">★★★★★</div>
+                <h5 class="mt-2 mb-0">Priya K.</h5>
+                <small class="text-muted">San Jose, CA</small>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
+      </div>
     </div>
 
     <!-- FAQ Section -->
