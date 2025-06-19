@@ -86,11 +86,13 @@
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"
+                  style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%);">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"
+                  style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; width: 40px; height: 40px; top: 50%; transform: translateY(-50%);">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -176,6 +178,13 @@
             {% for car in cars %}
             <div class="col">
                 <div class="card p-3 shadow-sm">
+                    {% set img = (car.image|string|trim) %}
+                    {% if img %}
+                      <img src="{{ url_for('static', filename='car_images/' ~ img) }}"
+                           class="card-img-top mb-3"
+                           alt="Car image of {{ car.brand }} {{ car.model }}"
+                           style="object-fit: cover; max-height: 200px;">
+                    {% endif %}
                     <h5 class="card-title">{{ car.year }} {{ car.brand }} {{ car.model }}</h5>
                     <p class="card-text text-muted">Price: ${{ car.price }}</p>
                     <a href="/recommend/{{ loop.index0 }}" class="btn btn-primary btn-sm">View Similar Cars</a>

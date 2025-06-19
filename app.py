@@ -4,6 +4,14 @@ import pandas as pd
 app = Flask(__name__)
 cars = pd.read_csv('used_cars.csv')
 
+# Clean image column: remove blanks and turn nan/None into empty strings
+cars['image'] = (
+    cars['image']
+        .astype(str)
+        .str.strip()
+        .replace({'nan': '', 'None': ''})
+)
+
 @app.route('/')
 def index():
     brands = sorted(cars['brand'].unique())
