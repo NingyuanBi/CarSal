@@ -2,24 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ car['brand'] }} {{ car['model'] }} - Details</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{ car.name }} ({{ car.year }})</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .image-section {
+            flex: 1 1 45%;
+            padding: 20px;
+        }
+        .image-section img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .details-section {
+            flex: 1 1 55%;
+            padding: 20px;
+        }
+        .details-section h1 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+        .details-section .specs {
+            margin-top: 20px;
+        }
+        .specs p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>{{ car['brand'] }} {{ car['model'] }} ({{ car['year'] }})</h1>
-        <img src="{{ url_for('static', filename='car_images/' + car['image']) }}" alt="Car image" style="max-width: 400px; height: auto;">
-
-        <table>
-            <tr><th>Price</th><td>${{ "{:,.0f}".format(car['price']) }}</td></tr>
-            <tr><th>Mileage</th><td>{{ car['mileage'] }} miles</td></tr>
-            <tr><th>Color</th><td>{{ car['color'] }}</td></tr>
-            <tr><th>Transmission</th><td>{{ car['transmission'] }}</td></tr>
-            <tr><th>Fuel Type</th><td>{{ car['fuel_type'] }}</td></tr>
-        </table>
-
-        <br>
-        <a href="{{ url_for('home') }}" class="btn">← Back to Listings</a>
+        <div class="image-section">
+            <img src="{{ url_for('static', filename='car_images/' + car.image) }}" alt="{{ car.name }}">
+        </div>
+        <div class="details-section">
+            <h1>{{ car.name }} ({{ car.year }})</h1>
+            <div class="specs">
+                <p><strong>Price:</strong> ${{ "{:,.0f}".format(car.price) }}</p>
+                <p><strong>Mileage:</strong> {{ "{:,}".format(car.mileage) }} miles</p>
+                <p><strong>Color:</strong> {{ car.color }}</p>
+                <p><strong>Transmission:</strong> {{ car.transmission }}</p>
+                <p><strong>Fuel Type:</strong> {{ car.fuel_type }}</p>
+            </div>
+            <a href="{{ url_for('index') }}" class="back-link">&larr; Back to Listings</a>
+        </div>
     </div>
 </body>
 </html>
