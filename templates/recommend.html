@@ -9,7 +9,7 @@
   <div class="container mt-5">
     <h2 class="mb-4">Selected Car</h2>
     <div class="alert alert-info">
-      {{ selected.year }} {{ selected.brand }} {{ selected.model }} - ${{ selected.price }}
+      {{ selected['year'] }} {{ selected['brand'] }} {{ selected['model'] }} - ${{ selected['price'] }}
     </div>
 
     <h4 class="mt-4">Similar Cars Recommended for You:</h4>
@@ -17,8 +17,8 @@
       {% for car in recs %}
         <div class="col">
           <div class="card p-3 shadow-sm">
-            <h5 class="card-title">{{ car.year }} {{ car.brand }} {{ car.model }}</h5>
-            <p class="card-text text-muted">Price: ${{ car.price }}</p>
+            <h5 class="card-title">{{ car['year'] }} {{ car['brand'] }} {{ car['model'] }}</h5>
+            <p class="card-text text-muted">Price: ${{ car['price'] }}</p>
           </div>
         </div>
       {% endfor %}

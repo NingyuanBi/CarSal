@@ -24,6 +24,15 @@ def filter_by_brand():
     brands = sorted(cars['brand'].unique())
     return render_template('index.html', cars=filtered.to_dict(orient='records'), brands=brands, selected=selected_brand)
 
+@app.route('/car/<int:car_id>')
+def car_detail(car_id):
+    try:
+        car = cars.iloc[car_id].to_dict()
+    except IndexError:
+        return "Car not found", 404
+
+    return render_template('car_detail.html', car=car)
+
 @app.route('/recommend/<int:car_id>')
 def recommend(car_id):
     selected = cars.iloc[car_id]
