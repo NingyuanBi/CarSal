@@ -51,10 +51,8 @@ def favorite_car(car_id):
 
 @app.route('/favorites')
 def favorites():
-    favorites = session.get('favorites', [])
-    cars_list = cars.to_dict(orient='records')
-    favorite_cars = [car for car in cars_list if car['id'] in favorites]
-    return render_template('favorites.html', cars=favorite_cars)
+    favorite_cars = [car for car in car_data if car['id'] in [1, 2]]
+    return render_template('favorites.html', favorite_cars=favorite_cars)
 
 if __name__ == '__main__':
     app.run(debug=True)

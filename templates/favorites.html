@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="mb-4">Your Favorite Cars</h2>
+    {% if favorite_cars %}
+      <div class="row">
+        {% for car in favorite_cars %}
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <img src="{{ url_for('static', filename='car_images/' + car.image) }}" class="card-img-top" alt="{{ car.name }}">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ car.name }}</h5>
+                <p class="card-text">{{ car.year }} • {{ car.make }} • {{ car.model }}</p>
+                <p class="card-text"><strong>${{ "{:,.2f}".format(car.price) }}</strong></p>
+                <a href="{{ url_for('car_detail', car_id=car.id) }}" class="btn btn-outline-primary mt-auto">View Details</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">You haven’t liked any cars yet. Browse and add your favorites!</p>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}
