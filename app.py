@@ -4,6 +4,14 @@ import pandas as pd
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
+
+# --- Make 'now()' available in all templates ---
+from datetime import datetime
+
+@app.context_processor
+def inject_now():
+    """Expose a callable 'now' inside templates: {{ now().year }}"""
+    return {'now': datetime.utcnow}
 cars = pd.read_csv('used_cars.csv')
 
 # Clean image column: remove blanks and turn nan/None into empty strings
@@ -99,10 +107,17 @@ def donate_cash():
     """Landing page for cash donation (placeholder)."""
     return "<h1>Donate Cash – Coming Soon</h1><p>Secure cash donations will be enabled soon.</p>"
 
+
 @app.route('/about')
 def about():
     """About Us detailed page (placeholder)."""
     return "<h1>About Us</h1><p>This section will tell our story in detail – stay tuned!</p>"
+
+# --- Careers placeholder route ---
+@app.route('/careers')
+def careers():
+    """Careers page (placeholder)."""
+    return "<h1>Careers – Join Our Team</h1><p>We’ll list open positions here soon.</p>"
 
 if __name__ == '__main__':
     app.run(debug=True)
