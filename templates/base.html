@@ -9,10 +9,14 @@
     <style>
       /* Banner area – only used on homepage */
       header.banner {
-          height: 65vh;                     /* fixed height instead of min-height to avoid extra black area */
+          height: calc(65vh + 56px);        /* fixed height instead of min-height to avoid extra black area */
           background: #1f2327 center/cover no-repeat;
           position: relative;
       }
+      header.banner {
+          margin-top: -56px; /* pull banner up behind the navbar */
+      }
+
       /* dark overlay */
       header.banner::before {
           content: "";
@@ -36,6 +40,12 @@
       header.banner .carousel-control-prev,
       header.banner .carousel-control-next {
           z-index: 3;
+      }
+
+      /* Ensure navbar and mega‑menu sit flush with no visible gap */
+      .navbar {
+          border-bottom: none !important;   /* remove thin grey line */
+          background-clip: padding-box;   /* keep background while overlapping banner */
       }
 
       /* ---------------- Slide‑down mega‑menu ---------------- */
@@ -63,11 +73,11 @@
       /* ---------- Toggle‑able mega menu (works anywhere on page) ---------- */
       .mega-menu {
         position:fixed;
-        top:56px;                       /* height of navbar */
+        top:54px;                       /* height of navbar minus 1px to close gap */
         left:0;
         right:0;
         background:#fff;
-        border-top:1px solid #dee2e6;
+        border-top:0;
         z-index:1010;
         max-height:0;
         overflow:hidden;
@@ -77,13 +87,14 @@
       .mega-menu.show {
         max-height:420px;               /* reveal */
         box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
+        border-top:1px solid #dee2e6;
       }
     </style>
 </head>
 
 <body class="bg-light">
     <!-- navigation bar -->
-    <nav class="navbar navbar-light bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-light bg-white sticky-top">
         <div class="container-fluid d-flex align-items-center px-3">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ url_for('index') }}">
               <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AutoSeek logo"
