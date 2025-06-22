@@ -13,12 +13,12 @@
       }
       /* Banner area – only used on homepage */
       header.banner {
-          height: calc(65vh + 56px);        /* fixed height instead of min-height to avoid extra black area */
-          background: #1f2327 center/cover no-repeat;
+          height: 65vh;                     /* banner ends exactly at hero bottom */
+          margin-top: -56px;                /* pull banner up behind the navbar */
+          /* background: #1f2327 center/cover no-repeat; */
           position: relative;
-      }
-      header.banner {
-          margin-top: -56px; /* pull banner up behind the navbar */
+          overflow: hidden;                 /* clip overlay so it doesn't tint next section */
+          z-index: 1;          /* stay behind main content */
       }
 
       /* dark overlay */
@@ -26,8 +26,15 @@
           content: "";
           position: absolute;
           inset: 0;
-          background: rgba(0, 0, 0, 0.55);
+          background: rgba(0, 0, 0, 0.15);
+          z-index: 1;          /* same stacking level as banner */
           pointer-events: none;             /* allow clicks on controls */
+      }
+
+      /* Ensure page sections render above the hero overlay */
+      section {
+          position: relative;
+          z-index: 2;
       }
       header.banner .container,
       header.banner .carousel,
@@ -165,7 +172,7 @@
     </style>
 </head>
 
-<body class="bg-light">
+<body>
     <!-- navigation bar -->
     <nav class="navbar navbar-light bg-white sticky-top">
         <div class="container-fluid d-flex align-items-center px-3">
@@ -243,7 +250,7 @@
     </div>
 
     <!-- detail -->
-    <main>
+    <main class="flex-grow-1" style="background-color: transparent;">
         {% block content %}{% endblock %}
     </main>
 

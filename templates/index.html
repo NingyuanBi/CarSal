@@ -42,6 +42,21 @@
       filter: invert(0.7);
   }
 </style>
+<style>
+  /* Wide‑gamut safe brand colours (Display‑P3 with sRGB fallback) */
+  .donation-bg{
+    /* Fallback for non‑P3 browsers */
+    background-color:#EF8B3B;
+    /* Wide‑gamut – shows identical hue on P3 displays */
+    background-color:color(display-p3 0.937 0.545 0.231);
+    background-image:none;
+  }
+  .faq-bg{
+    background-color:#313F81;
+    background-color:color(display-p3 0.192 0.247 0.506);
+    background-image:none;
+  }
+</style>
 
 <!-- ===== HOW IT WORKS =================================================== -->
 <section id="how" class="py-5 bg-white">
@@ -130,7 +145,7 @@
 </section>
 
 <!-- ===== DONATION ======================================================= -->
-<section class="py-5">
+<section class="py-5 donation-bg">
   <div class="container">
     <div class="row align-items-center g-4">
       <!-- Text -->
@@ -155,27 +170,27 @@
 </section>
 
 <!-- ===== FAQ ============================================================ -->
-<section class="py-5 mb-5" id="faq">
+<section class="py-5 mb-5 text-white faq-bg" id="faq">
   <div class="container">
-      <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+      <h2 class="text-center mb-5 text-white">Frequently Asked Questions</h2>
       <div class="accordion w-75 mx-auto" id="faqAccordion">
 
           <div class="accordion-item">
-              <h2 class="accordion-header" id="q1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">How do I get car recommendations?</button></h2>
+              <h2 class="accordion-header" id="q1"><button class="accordion-button bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#a1">How do I get car recommendations?</button></h2>
               <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">Simply click the “View Similar Cars” button on any vehicle to see others with similar price and features.</div>
               </div>
           </div>
 
           <div class="accordion-item">
-              <h2 class="accordion-header" id="q2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Can I filter cars by brand?</button></h2>
+              <h2 class="accordion-header" id="q2"><button class="accordion-button bg-white text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Can I filter cars by brand?</button></h2>
               <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">Yes. Use the brand dropdown at the top of the listings to narrow down to your preferred makes.</div>
               </div>
           </div>
 
           <div class="accordion-item">
-              <h2 class="accordion-header" id="q3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">Are the prices negotiable?</button></h2>
+              <h2 class="accordion-header" id="q3"><button class="accordion-button bg-white text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">Are the prices negotiable?</button></h2>
               <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">Prices are set by individual owners, but most are open to reasonable offers—use the contact button on the detail page.</div>
               </div>
