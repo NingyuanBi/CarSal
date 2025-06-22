@@ -37,24 +37,112 @@
       header.banner .carousel-control-next {
           z-index: 3;
       }
+
+      /* ---------------- Slide‑down mega‑menu ---------------- */
+      .mega-menu {
+        overflow:hidden;
+        max-height:0;                /* collapsed */
+        transition:max-height .4s ease;
+      }
+
+      /* Remove the default side padding that Bootstrap adds to a
+         .container inside the navbar so logo and button group can
+         hug the edges of the viewport */
+      .navbar .container-fluid {
+          padding-left: 0;
+          padding-right: 0;
+      }
+
+      /* Keep Bootstrap sticky behaviour */
+      .navbar.sticky-top {
+        position:sticky;
+        top:0;
+        z-index:1020;        /* above hero & mega‑menu */
+      }
+
+      /* ---------- Toggle‑able mega menu (works anywhere on page) ---------- */
+      .mega-menu {
+        position:fixed;
+        top:56px;                       /* height of navbar */
+        left:0;
+        right:0;
+        background:#fff;
+        border-top:1px solid #dee2e6;
+        z-index:1010;
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .4s ease;
+      }
+
+      .mega-menu.show {
+        max-height:420px;               /* reveal */
+        box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
+      }
     </style>
 </head>
 
 <body class="bg-light">
     <!-- navigation bar -->
     <nav class="navbar navbar-light bg-white shadow-sm sticky-top">
-        <div class="container d-flex align-items-center">
+        <div class="container-fluid d-flex align-items-center px-3">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ url_for('index') }}">
               <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AutoSeek logo"
                    style="width:140px; height:auto; object-fit:contain;" class="me-2">
             </a>
-            <div class="ms-auto">
-                <a href="{{ url_for('favorites') }}" class="btn btn-outline-secondary me-2">❤️ Favorites</a>
-                <a href="{{ url_for('listings') }}" class="btn btn-outline-primary">Browse Cars</a>
-                <a href="{{ url_for('index') }}" class="btn btn-outline-primary me-2">← Back Home</a>
+            <div class="d-flex align-items-center gap-2 ms-auto">
+              <a href="{{ url_for('favorites') }}" class="btn btn-outline-secondary me-2">❤️ Favorites</a>
+              <a href="{{ url_for('listings') }}" class="btn btn-outline-primary">Browse Cars</a>
+              <a href="{{ url_for('index') }}" class="btn btn-outline-primary">← Back Home</a>
+              <button id="menuToggle" class="btn btn-outline-secondary" aria-label="Menu">
+                  <i class="bi bi-list"></i>
+              </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mega menu shown on navbar hover -->
+    <div class="mega-menu shadow-sm border-top">
+      <div class="container py-4 small text-muted">
+        <div class="row gy-4">
+
+          <div class="col-6 col-md-3">
+            <h6 class="text-uppercase fw-bold small">Company</h6>
+            <ul class="list-unstyled">
+              <li><a class="text-decoration-none text-muted" href="{{ url_for('about') }}">About Us</a></li>
+              <li><a class="text-decoration-none text-muted" href="{{ url_for('careers') }}">Careers</a></li>
+              <li><a class="text-decoration-none text-muted" href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h6 class="text-uppercase fw-bold small">Marketplace</h6>
+            <ul class="list-unstyled">
+              <li><a class="text-decoration-none text-muted" href="{{ url_for('listings') }}">Browse Cars</a></li>
+              <li><a class="text-decoration-none text-muted" href="{{ url_for('donate_car') }}">Donate a Car</a></li>
+              <li><a class="text-decoration-none text-muted" href="{{ url_for('donate_cash') }}">Donate Cash</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h6 class="text-uppercase fw-bold small">Support</h6>
+            <ul class="list-unstyled">
+              <li><a class="text-decoration-none text-muted" href="#faq">FAQ</a></li>
+              <li><a class="text-decoration-none text-muted" href="#">Contact Us</a></li>
+              <li><a class="text-decoration-none text-muted" href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h6 class="text-uppercase fw-bold small">Legal</h6>
+            <ul class="list-unstyled">
+              <li><a class="text-decoration-none text-muted" href="#">Terms of Use</a></li>
+              <li><a class="text-decoration-none text-muted" href="#">Site Map</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
     <!-- Flash message -->
     <div class="container mt-3">
@@ -139,6 +227,23 @@
 
     <!-- public script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  (function () {
+    const toggle = document.getElementById('menuToggle');
+    const mega   = document.querySelector('.mega-menu');
+    if(toggle){
+      toggle.addEventListener('click', () => {
+        mega.classList.toggle('show');
+      });
+    }
+    // close mega‑menu when clicking outside
+    document.addEventListener('click', (e)=>{
+      if(!mega.contains(e.target) && !toggle.contains(e.target)){
+        mega.classList.remove('show');
+      }
+    });
+  })();
+</script>
 </body>
 
 </html>
