@@ -77,11 +77,32 @@ def unfavorite_car(car_id):
         flash("Car not in your favorites.", "info")
     return redirect(url_for('favorites'))
 
+
 @app.route('/listings')
 def listings():
     return render_template('listings.html',
                            cars=cars.to_dict(orient="records"),
                            brands=brands)
+
+# --- Donation & About routes ---------------------------------------------
+
+@app.route('/donate_car')
+def donate_car():
+    """Landing page for car donation (placeholder)."""
+    # When a dedicated template is ready, swap the return line for:
+    # return render_template('donate_car.html')
+    return "<h1>Donate a Car – Coming Soon</h1><p>Thank you for your generosity! " \
+           "A full donation form will appear here shortly.</p>"
+
+@app.route('/donate_cash')
+def donate_cash():
+    """Landing page for cash donation (placeholder)."""
+    return "<h1>Donate Cash – Coming Soon</h1><p>Secure cash donations will be enabled soon.</p>"
+
+@app.route('/about')
+def about():
+    """About Us detailed page (placeholder)."""
+    return "<h1>About Us</h1><p>This section will tell our story in detail – stay tuned!</p>"
 
 if __name__ == '__main__':
     app.run(debug=True)
