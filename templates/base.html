@@ -120,6 +120,39 @@
         border-top:1px solid #dee2e6;   /* visible only when open */
         box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
       }
+      /* ===== Footer visual polish & shared hover styles ===== */
+      footer.site-footer{
+        background: linear-gradient(180deg,#ffffff 0%,#f9f9f9 100%);
+        border-top: 1px solid #dee2e6;
+        border-radius: 8px 8px 0 0;           /* match mega‑menu card look */
+        box-shadow: 0 -8px 20px rgba(0,0,0,.07);
+      }
+      footer.site-footer a{
+        transition: background-color .20s,color .20s,padding-left .20s;
+      }
+      footer.site-footer a:hover,
+      footer.site-footer a:focus,
+      .mega-menu a:hover,
+      .mega-menu a:focus{
+        background-color:#e6f0ff;
+        color:#0d6efd;
+        padding-left:.6rem;
+        border-left:4px solid #0d6efd;
+      }
+
+      /* ----- Font‑size bump: +2px for body text links, +4px for section headers ---- */
+      .navbar .btn,
+      .navbar .navbar-brand,
+      .navbar a,
+      .mega-menu a,
+      footer.site-footer a{
+        font-size: calc(1rem + 2px);
+      }
+      .mega-menu h6,
+      footer.site-footer h5,
+      footer.site-footer h6{
+        font-size: calc(1rem + 4px);
+      }
     </style>
 </head>
 
@@ -206,7 +239,7 @@
     </main>
 
     <!-- ===== GLOBAL FOOTER ================================================== -->
-    <footer class="pt-5 pb-4 bg-white border-top">
+    <footer class="site-footer pt-5 pb-4 border-top">
       <div class="container">
         <div class="row gy-4">
 
