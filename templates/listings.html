@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}All Car Listings – Used Car Marketplace{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Available Used Cars</h2>
+
+  <div class="row g-4">
+    {% for car in cars %}
+      <div class="col-12">
+        <div class="card mb-3 shadow-sm">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{ url_for('static', filename='car_images/' ~ car.image) }}"
+                   class="img-fluid rounded-start" style="max-height:200px;object-fit:cover;" alt="Car">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ car.year }} {{ car.brand }} {{ car.model }}</h5>
+                <p class="card-text">Price: ${{ car.price }}</p>
+                <p class="card-text">Mileage: {{ car.mileage }} miles</p>
+                <a href="{{ url_for('car_detail', car_id=loop.index0) }}" class="btn btn-primary btn-sm">View Details</a>
+                <a href="{{ url_for('favorite_car', car_id=loop.index0) }}" class="btn btn-outline-danger btn-sm ms-2">❤️ Favorite</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

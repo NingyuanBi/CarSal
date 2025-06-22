@@ -1,54 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Used Car Marketplace</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      /* Banner styling for larger hero (supports future GIF background) */
-      header.banner {
-          min-height: 65vh;                       /* bigger banner */
-          background: #1f2327 center/cover no-repeat;
-          position: relative;
-      }
-      /* If you later drop a GIF to static/img/hero.gif, uncomment: */
-      /* header.banner { background-image:url('{{ url_for('static', filename='img/hero.gif') }}'); } */
+{% extends "base.html" %}
 
-      /* Dark translucent overlay to keep text readable */
-      header.banner::before {
-          content:"";
-          position:absolute;
-          inset:0;
-          background:rgba(0,0,0,.55);
-      }
-      header.banner .container {
-          position:relative;      /* keep hero text above overlay */
-          z-index:2;
-      }
+{% block title %}Home – Used Car Marketplace{% endblock %}
 
-      /* Make carousel arrows visible on light bg */
-      .carousel-control-prev-icon,
-      .carousel-control-next-icon {
-          filter: invert(1) brightness(0.4);   /* dark arrows */
-      }
-      .carousel-control-prev,
-      .carousel-control-next {
-          width: 3rem;
-          height: 3rem;
-      }
-    </style>
-</head>
-<body class="bg-light">
-
+{% block content %}
 <!-- ===== HERO / BANNER ================================================== -->
-<header class="banner d-flex align-items-center text-center text-white">
-  <div class="container">
-      <h1 class="display-4 fw-bold">Find the&nbsp;Right&nbsp;Used&nbsp;Car</h1>
-      <p class="lead mb-4">Browse and discover your next vehicle with confidence.</p>
-      <a href="#car-list" class="btn btn-warning btn-lg me-2">Browse&nbsp;Cars</a>
-      <a href="#how" class="btn btn-outline-light btn-lg">How&nbsp;It&nbsp;Works</a>
+<header class="banner p-0 position-relative">
+
+  <!-- Background carousel (images only) -->
+  <div id="heroCarousel" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner h-100">
+      {% for img in ['hero1.jpg', 'hero2.jpg', 'hero3.jpg', 'hero4.jpg'] %}
+      <div class="carousel-item {% if loop.first %}active{% endif %} h-100"
+           style="background:url('{{ url_for('static', filename='hero/' ~ img) }}') center/cover no-repeat;">
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Static caption overlay -->
+  <div class="hero-caption d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 text-center"
+       style="z-index:2;">
+    <div>
+      <h1 class="display-4 fw-bold text-white">Find the&nbsp;Right&nbsp;Used&nbsp;Car</h1>
+      <p class="lead text-white mb-4">Browse and discover your next vehicle with confidence.</p>
+      <a href="{{ url_for('listings') }}" class="btn btn-warning btn-lg me-2">Browse Cars</a>
+      <a href="#how" class="btn btn-outline-light btn-lg">How It Works</a>
+    </div>
   </div>
 </header>
+
+<style>
+  /* Darken testimonial carousel arrows for light background */
+  #testimonialCarousel .carousel-control-prev-icon,
+  #testimonialCarousel .carousel-control-next-icon {
+      filter: invert(0.7);
+  }
+</style>
 
 <!-- ===== HOW IT WORKS =================================================== -->
 <section id="how" class="py-5 bg-white">
@@ -166,31 +159,4 @@
       </div>
   </div>
 </section>
-
-<!-- ===== CAR LIST ======================================================= -->
-<div class="container py-5" id="car-list">
-    <h2 class="mb-4">All Listings</h2>
-
-    {% for car in cars %}
-    <div class="card mb-3 shadow-sm">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="{{ url_for('static', filename='car_images/' ~ car.image) }}" alt="Car image" class="img-fluid rounded-start" style="max-height: 200px; object-fit: cover;">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ car.year }} {{ car.brand }} {{ car.model }}</h5>
-                    <p class="card-text">Price: ${{ car.price }}</p>
-                    <p class="card-text">Mileage: {{ car.mileage }} miles</p>
-                    <a href="{{ url_for('car_detail', car_id=loop.index0) }}" class="btn btn-primary btn-sm">View Details</a>
-                    <a href="{{ url_for('favorite_car', car_id=loop.index0) }}" class="btn btn-outline-danger btn-sm ms-2">❤️ Favorite</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}

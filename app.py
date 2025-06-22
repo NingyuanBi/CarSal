@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask import send_from_directory
 import pandas as pd
 
@@ -13,6 +13,9 @@ cars['image'] = (
         .str.strip()
         .replace({'nan': '', 'None': ''})
 )
+
+# Build a reusable, sorted brand list for dropdowns / filters
+brands = sorted(cars['brand'].unique())
 
 @app.route('/')
 def index():
@@ -47,12 +50,38 @@ def favorite_car(car_id):
     if car_id not in favorites:
         favorites.append(car_id)
         session['favorites'] = favorites
-    return redirect(url_for('index'))
+        flash("Car added to favorites!", "success")
+    else:
+        flash("Car already in favorites.", "info")
+    return redirect(request.referrer or url_for('listings'))
 
 @app.route('/favorites')
 def favorites():
-    favorite_cars = [car for car in car_data if car['id'] in [1, 2]]
+    fav_ids = session.get('favorites', [])
+    favorite_cars = []
+    for i in fav_ids:
+        if 0 <= i < len(cars):
+            car_dict = cars.iloc[i].to_dict()
+            car_dict['car_id'] = i      # keep original index for detail link
+            favorite_cars.append(car_dict)
     return render_template('favorites.html', favorite_cars=favorite_cars)
+
+@app.route('/unfavorite/<int:car_id>')
+def unfavorite_car(car_id):
+    favorites = session.get('favorites', [])
+    if car_id in favorites:
+        favorites.remove(car_id)
+        session['favorites'] = favorites
+        flash("Car removed from favorites!", "warning")
+    else:
+        flash("Car not in your favorites.", "info")
+    return redirect(url_for('favorites'))
+
+@app.route('/listings')
+def listings():
+    return render_template('listings.html',
+                           cars=cars.to_dict(orient="records"),
+                           brands=brands)
 
 if __name__ == '__main__':
     app.run(debug=True)

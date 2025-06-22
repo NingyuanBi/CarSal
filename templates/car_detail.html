@@ -1,111 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ car.name }} ({{ car.year }})</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 960px;
-            margin: 40px auto;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .image-section {
-            flex: 1 1 45%;
-            padding: 20px;
-        }
-        .image-section img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .details-section {
-            flex: 1 1 55%;
-            padding: 20px;
-        }
-        .details-section h1 {
-            font-size: 26px;
-            margin-bottom: 10px;
-        }
-        .details-section .specs {
-            margin-top: 20px;
-        }
-        .specs p {
-            font-size: 16px;
-            margin: 8px 0;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        .btn {
-            display: inline-block;
-            font-weight: 400;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: middle;
-            user-select: none;
-            border: 1px solid transparent;
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: 0.25rem;
-            transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,
-                        border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
-            cursor: pointer;
-        }
-        .btn-outline-danger {
-            color: #dc3545;
-            border-color: #dc3545;
-            background-color: transparent;
-        }
-        .btn-outline-danger:hover {
-            color: #fff;
-            background-color: #dc3545;
-            border-color: #dc3545;
-        }
-        .btn-secondary {
-            color: #fff;
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-        .btn-secondary:hover {
-            color: #fff;
-            background-color: #5a6268;
-            border-color: #545b62;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .mt-3 {
-            margin-top: 1rem !important;
-        }
-        .mt-4 {
-            margin-top: 1.5rem !important;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="image-section">
-            <img src="{{ url_for('static', filename='car_images/' + car.image) }}" alt="{{ car.name }}">
+{% extends "base.html" %}
+
+{% block title %}{{ car.name }} ({{ car.year }}) – Used Car Marketplace{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='car_images/' + car.image) }}" alt="{{ car.name }}" class="img-fluid rounded mb-4">
         </div>
-        <div class="details-section">
+        <div class="col-md-6">
             <h1>{{ car.name }} ({{ car.year }})</h1>
             <div class="specs">
                 <p><strong>Price:</strong> ${{ "{:,.0f}".format(car.price) }}</p>
@@ -114,13 +17,12 @@
                 <p><strong>Transmission:</strong> {{ car.transmission }}</p>
                 <p><strong>Fuel Type:</strong> {{ car.fuel_type }}</p>
             </div>
-            <div class="text-center">
-                <a href="{{ url_for('favorite_car', car_id=car_id) }}" class="btn btn-outline-danger mt-3">❤️ Favorite</a>
-            </div>
-            <div class="text-center mt-4">
-                <a href="{{ url_for('index') }}" class="btn btn-secondary">← Back to Listings</a>
+            <div class="mt-4">
+                <a href="{{ url_for('favorite_car', car_id=car_id) }}" class="btn btn-outline-danger me-2">❤️ Favorite</a>
+                <a href="{{ url_for('unfavorite_car', car_id=car_id) }}" class="btn btn-outline-warning me-2">🗑️ Remove</a>
+                <a href="{{ url_for('listings') }}" class="btn btn-secondary">← Back to Listings</a>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
