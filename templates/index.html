@@ -57,29 +57,57 @@
     background-image:none;
   }
 </style>
+<style>
+  /* Circular icon backgrounds for “How It Works” */
+  .how-icon{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  /* Left & right icons – deep blue */
+  .icon-left,
+  .icon-right{
+    background-color:#313F81;                     /* sRGB */
+    background-color:color(display-p3 0.192 0.247 0.506); /* P3 */
+  }
+  /* Middle icon – brand orange */
+  .icon-mid{
+    background-color:#EF8B3B;                     /* sRGB */
+    background-color:color(display-p3 0.937 0.545 0.231); /* P3 */
+  }
+</style>
 
 <!-- ===== HOW IT WORKS =================================================== -->
 <section id="how" class="py-5 bg-white">
   <div class="container text-center">
       <h2 class="mb-5">How&nbsp;It&nbsp;Works</h2>
-      <div class="row g-4">
+      <div class="row g-4 justify-content-center">
           <div class="col-md-4">
               <div class="p-4 border rounded h-100">
-                  <img src="{{ url_for('static', filename='icons/car.png') }}" class="mb-3" style="width:80px;height:80px;" alt="Browse Cars icon">
+                  <div class="how-icon icon-left mb-3 mx-auto">
+                    <img src="{{ url_for('static', filename='icons/car.png') }}" alt="Browse Cars icon" style="width:48px;height:48px;">
+                  </div>
                   <h5>Browse Cars</h5>
                   <p class="text-muted">Explore a wide range of vehicles that fit your preferences.</p>
               </div>
           </div>
           <div class="col-md-4">
               <div class="p-4 border rounded h-100">
-                  <img src="{{ url_for('static', filename='icons/recommend.png') }}" class="mb-3" style="width:80px;height:80px;" alt="Get Recommendations icon">
+                  <div class="how-icon icon-mid mb-3 mx-auto">
+                    <img src="{{ url_for('static', filename='icons/recommend.png') }}" alt="Get Recommendations icon" style="width:48px;height:48px;">
+                  </div>
                   <h5>Get Recommendations</h5>
                   <p class="text-muted">Let our system suggest similar cars based on your choice.</p>
               </div>
           </div>
           <div class="col-md-4">
               <div class="p-4 border rounded h-100">
-                  <img src="{{ url_for('static', filename='icons/contact.png') }}" class="mb-3" style="width:80px;height:80px;" alt="Contact Sellers icon">
+                  <div class="how-icon icon-right mb-3 mx-auto">
+                    <img src="{{ url_for('static', filename='icons/contact.png') }}" alt="Contact Sellers icon" style="width:48px;height:48px;">
+                  </div>
                   <h5>Contact Sellers</h5>
                   <p class="text-muted">Reach out to the owner and schedule your test drive.</p>
               </div>
