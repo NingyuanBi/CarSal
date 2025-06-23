@@ -111,7 +111,13 @@ def donate_cash():
 @app.route('/about')
 def about():
     """About Us detailed page (placeholder)."""
-    return "<h1>About Us</h1><p>This section will tell our story in detail – stay tuned!</p>"
+    return render_template('about.html')
+
+# --- Contact placeholder route ---
+@app.route('/contact')
+def contact():
+    """Contact page (placeholder)."""
+    return "<h1>Contact Us</h1><p>A full contact form will appear here soon.</p>"
 
 # --- Careers placeholder route ---
 @app.route('/careers')

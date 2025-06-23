@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}About Us – AutoSeek{% endblock %}
+
+{% block content %}
+
+<!-- ░░░  HERO ░░░ -->
+<header class="position-relative" style="
+         height:55vh;
+         background:url('{{ url_for('static', filename='images/about_hero.jpg') }}') center/cover no-repeat;">
+  <div class="position-absolute top-0 start-0 w-100 h-100" 
+       style="background:rgba(0,0,0,.55);"></div>
+
+  <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative"
+       style="z-index:2;">
+      <h1 class="display-5 fw-bold text-white mb-2">Driven by Purpose, Fueled by Community</h1>
+      <p class="lead text-white-50 text-center w-75 mx-auto">
+        AutoSeek is a 501(c)(3) nonprofit on a mission to make reliable
+        transportation affordable for everyone—while reinvesting every dollar back into the
+        communities we serve.
+      </p>
+  </div>
+</header>
+
+<!-- ░░░  MISSION STATEMENT ░░░ -->
+<section class="py-5 text-center" style="background-color:#EF8B3B;">
+  <div class="container text-white">
+    <h2 class="fw-bold mb-4">Our Mission</h2>
+    <p class="fs-5 mx-auto" style="max-width:720px;">
+      We bridge the gap between unused vehicles and families who need them.
+      By transforming donated cars into affordable options—or the funds that power our programs—we provide
+      sustainable mobility, spur economic opportunity, and reduce waste.
+    </p>
+  </div>
+</section>
+
+<!-- ░░░  IMPACT METRICS ░░░ -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row text-center gy-4">
+      {% set stats = [
+          ('10,000+','Cars placed with\nnew owners'),
+          ('$4.2 M','Re-invested into\nlocal programs'),
+          ('1,800 t','CO₂ emissions saved\nthrough reuse'),
+          ('350','Community partners\nnation-wide')
+      ] %}
+      {% for value, label in stats %}
+        <div class="col-6 col-md-3">
+          <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+               style="width:110px;height:110px;background:#313F81;">
+            <span class="h4 text-white mb-0">{{ value }}</span>
+          </div>
+          <p class="small text-muted lh-sm">{{ label|safe }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ░░░  TIMELINE ░░░ -->
+<section class="py-5" style="background-color:#F8F9FA;">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Journey</h2>
+
+    <div class="row g-4">
+      {% set timeline = [
+        ('2010','Founded in San Diego, CA with a single donated sedan.'),
+        ('2014','Reached first 1,000 vehicle donations and expanded statewide.'),
+        ('2018','Launched Eco-Refurbish program reducing refurb waste by 35%.'),
+        ('2023','Opened Mountain View HQ and exceeded 10,000 cars placed.')
+      ] %}
+      {% for year, text in timeline %}
+        <div class="col-12 col-md-6">
+          <div class="card shadow-sm h-100">
+            <div class="card-body d-flex">
+              <div class="badge rounded-pill flex-shrink-0 me-3"
+                   style="background:#313F81;">{{ year }}</div>
+              <p class="mb-0">{{ text }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ░░░  TEAM / BOARD ░░░ -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center mb-5">Leadership&nbsp;Team</h2>
+
+    <div class="row g-4 justify-content-center">
+      {% set people = [
+        ('ceo.jpg','Alex Nguyen','Chief Executive Officer'),
+        ('coo.jpg','Maria Rossi','Chief Operating Officer'),
+        ('cdo.jpg','Luis Martínez','Director, Donor Relations')
+      ] %}
+      {% for photo, name, title in people %}
+        <div class="col-6 col-md-4 col-lg-3 text-center">
+          <img src="{{ url_for('static', filename='team/' ~ photo) }}"
+               class="rounded-circle mb-3 shadow-sm" style="width:120px;height:120px;object-fit:cover;" alt="{{ name }}">
+          <h6 class="mb-0">{{ name }}</h6>
+          <small class="text-muted">{{ title }}</small>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ░░░  CALL-TO-ACTION ░░░ -->
+<section class="py-5 text-white text-center" style="background-color:#313F81;">
+  <div class="container">
+    <h2 class="mb-3">Ready to Drive Change?</h2>
+    <p class="mb-4 w-75 mx-auto">
+      Whether you have a vehicle to donate or want to partner with us,
+      your contribution helps keep communities moving.
+    </p>
+    <a href="{{ url_for('donate_car') }}" class="btn btn-warning btn-lg me-2">Donate a Car</a>
+    <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg">Partner With Us</a>
+  </div>
+</section>
+
+{% endblock %}
