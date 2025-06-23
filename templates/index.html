@@ -27,7 +27,7 @@
   <div class="hero-caption d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 text-center"
        style="z-index:2;">
     <div>
-      <h1 class="display-4 fw-bold text-white">Find the&nbsp;Right&nbsp;Used&nbsp;Car</h1>
+      <h1 class="display-4 fw-bold text-white">Find the&nbsp;Best&nbsp;Value&nbsp;Car for You</h1>
       <p class="lead text-white mb-4">Browse and discover your next vehicle with confidence.</p>
       <a href="{{ url_for('listings') }}" class="btn btn-warning btn-lg me-2">Browse Cars</a>
       <a href="#how" class="btn btn-outline-light btn-lg">How It Works</a>
@@ -65,21 +65,21 @@
       <div class="row g-4">
           <div class="col-md-4">
               <div class="p-4 border rounded h-100">
-                  <div class="fs-1 mb-3">🚗</div>
+                  <img src="{{ url_for('static', filename='icons/car.png') }}" class="mb-3" style="width:80px;height:80px;" alt="Browse Cars icon">
                   <h5>Browse Cars</h5>
                   <p class="text-muted">Explore a wide range of vehicles that fit your preferences.</p>
               </div>
           </div>
           <div class="col-md-4">
               <div class="p-4 border rounded h-100">
-                  <div class="fs-1 mb-3">🤖</div>
+                  <img src="{{ url_for('static', filename='icons/recommend.png') }}" class="mb-3" style="width:80px;height:80px;" alt="Get Recommendations icon">
                   <h5>Get Recommendations</h5>
                   <p class="text-muted">Let our system suggest similar cars based on your choice.</p>
               </div>
           </div>
           <div class="col-md-4">
               <div class="p-4 border rounded h-100">
-                  <div class="fs-1 mb-3">📞</div>
+                  <img src="{{ url_for('static', filename='icons/contact.png') }}" class="mb-3" style="width:80px;height:80px;" alt="Contact Sellers icon">
                   <h5>Contact Sellers</h5>
                   <p class="text-muted">Reach out to the owner and schedule your test drive.</p>
               </div>
@@ -170,7 +170,7 @@
 </section>
 
 <!-- ===== FAQ ============================================================ -->
-<section class="py-5 mb-5 text-white faq-bg" id="faq">
+<section class="py-5 text-white faq-bg" id="faq" style="margin-bottom:0;">
   <div class="container">
       <h2 class="text-center mb-5 text-white">Frequently Asked Questions</h2>
       <div class="accordion w-75 mx-auto" id="faqAccordion">
@@ -199,6 +199,8 @@
       </div>
   </div>
 </section>
+  <!-- spacer between FAQ and About -->
+  <div class="faq-bg" style="height:3rem;"></div>
 
 <!-- ===== ABOUT US  ====================================================== -->
 <section class="position-relative" style="height:75vh; background:url('{{ url_for('static', filename='images/about_banner.jpg') }}') center/cover no-repeat;">
