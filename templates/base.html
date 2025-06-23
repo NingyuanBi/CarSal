@@ -143,6 +143,48 @@
         padding: 0.45rem 0;
         transition: background-color .20s,color .20s,padding-left .20s;
       }
+      /* --- Social icons: keep perfect circle --- */
+      .social-icon {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 0;
+        overflow: visible;
+      }
+      /* Remove transforms and clip-paths for selected/active state */
+      .social-icon.active,
+      .social-icon.selected,
+      .social-icon:focus,
+      .social-icon:active {
+        /* No transform, no translate, no clip-path */
+        outline: none;
+        border: none;
+        background: #fff;
+        box-shadow: none;
+      }
+      .social-icon.active::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: calc(100% + 8px);
+        height: calc(100% + 8px);
+        border: 3px solid #007bff;
+        border-radius: 50%;
+        box-sizing: border-box;
+        z-index: -1;
+        background: none;
+      }
+      .social-icon i {
+        position: relative;
+        z-index: 1;
+        font-size: 1.1rem;
+      }
       footer.site-footer ul li {
         margin-bottom: 0.5rem;
       }
@@ -267,10 +309,10 @@
 
             <!-- Social icons -->
             <div class="d-flex gap-2">
-              <a class="btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-facebook"></i></a>
-              <a class="btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-instagram"></i></a>
-              <a class="btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-twitter-x"></i></a>
-              <a class="btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-linkedin"></i></a>
+              <a class="social-icon btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-facebook"></i></a>
+              <a class="social-icon btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-instagram"></i></a>
+              <a class="social-icon btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-twitter-x"></i></a>
+              <a class="social-icon btn btn-outline-secondary btn-sm rounded-circle" href="#"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
 
