@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: flask-app
+    runtime: python
+    pythonVersion: 3.11.11
+    buildCommand: ""
+    startCommand: gunicorn autoseek:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
