@@ -382,12 +382,15 @@
         mega.classList.remove('show');
       }
     });
-    // close mega‑menu when the user scrolls the page
-    window.addEventListener('scroll', () => {
-      if (mega.classList.contains('show')) {
-        mega.classList.remove('show');
-      }
-    });
+    // Close mega‑menu as soon as the user tries to scroll—this also catches
+    // the ‘rubber‑band’ overscroll at the very top / bottom of the page.
+    ['wheel','touchmove'].forEach(evt =>
+      window.addEventListener(evt, () => {
+        if (mega.classList.contains('show')) {
+          mega.classList.remove('show');
+        }
+      }, { passive: true })
+    );
   })();
 </script>
 </body>
