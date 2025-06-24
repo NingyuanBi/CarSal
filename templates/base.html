@@ -382,6 +382,12 @@
         mega.classList.remove('show');
       }
     });
+    // close mega‑menu when the user scrolls the page
+    window.addEventListener('scroll', () => {
+      if (mega.classList.contains('show')) {
+        mega.classList.remove('show');
+      }
+    });
   })();
 </script>
 </body>
