@@ -91,6 +91,23 @@
     background-color:color(display-p3 0.937 0.545 0.231); /* P3 */
   }
 </style>
+<style>
+/* --- Partner marquee --- */
+.partner-logo{
+  height:250px;
+  object-fit:contain;
+  transition:filter .3s, opacity .3s;
+}
+/* track animation */
+@keyframes marquee{
+  from{ transform:translateX(0); }
+  to  { transform:translateX(-50%); }
+}
+.partner-marquee .scroll-track{
+  animation:marquee 20s linear infinite;
+  animation-direction:reverse;
+}
+</style>
 
 <!-- ===== HOW IT WORKS =================================================== -->
 <section id="how" class="py-5 bg-white">
@@ -241,6 +258,33 @@
 </section>
   <!-- spacer between FAQ and About -->
   <div class="faq-bg" style="height:3rem;"></div>
+
+<!-- ===== PARTNER MARQUEE ============================================== -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center mb-4">Our&nbsp;Partners</h2>
+
+    <!-- horizontal scrolling list -->
+    <div class="partner-marquee overflow-hidden">
+      <div class="d-flex align-items-center gap-5 scroll-track">
+        {%
+          set logos = [
+            'partner1.png', 'partner2.png', 'partner3.png',
+            'partner4.png', 'partner5.png', 'partner6.png'
+          ]
+        %}
+        {# repeat twice for seamless loop #}
+        {% for _ in range(2) %}
+          {% for logo in logos %}
+            <img src="{{ url_for('static', filename='partners/' ~ logo) }}"
+                 alt="Partner logo"
+                 class="partner-logo">
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== ABOUT US  ====================================================== -->
 <section class="position-relative" style="height:75vh; background:url('{{ url_for('static', filename='images/about_banner.jpg') }}') center/cover no-repeat;">
