@@ -5,10 +5,10 @@
 
 <!-- ░░░  HERO ░░░ -->
 <header class="position-relative" style="
-         height:55vh;
+         height:80vh;
          background:url('{{ url_for('static', filename='images/about_hero.jpg') }}') center/cover no-repeat;">
   <div class="position-absolute top-0 start-0 w-100 h-100" 
-       style="background:rgba(0,0,0,.55);"></div>
+       style="background:rgba(0,0,0,.15);"></div>
 
   <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative"
        style="z-index:2;">
@@ -21,15 +21,79 @@
   </div>
 </header>
 
+<!-- ICONS: Place 36×36 px transparent PNGs here:
+     static/icons/initiatives/
+     ├─ salvage.png
+     ├─ education.png
+     ├─ workforce.png
+     └─ environment.png -->
+
 <!-- ░░░  MISSION STATEMENT ░░░ -->
 <section class="py-5 text-center" style="background-color:#EF8B3B;">
   <div class="container text-white">
     <h2 class="fw-bold mb-4">Our Mission</h2>
     <p class="fs-5 mx-auto" style="max-width:720px;">
-      We bridge the gap between unused vehicles and families who need them.
-      By transforming donated cars into affordable options—or the funds that power our programs—we provide
-      sustainable mobility, spur economic opportunity, and reduce waste.
+      AutoSeek Foundation is a California‑based 501(c)(3) committed to <strong>vehicle equity, sustainable mobility, and transportation access for underserved communities</strong>.&nbsp;
+      We believe safe, affordable vehicles are not a luxury &mdash; they are gateways to economic opportunity, education, and dignity. By researching salvage‑to‑rebuilt processes,
+      promoting circular‑economy policy, and equipping low‑income buyers with practical knowledge, we turn overlooked cars&nbsp;&amp;&nbsp;people into second‑chance success stories.
     </p>
+  </div>
+</section>
+
+<!-- ░░░  KEY INITIATIVES ░░░ -->
+<section class="py-5" style="background-color:#F8F9FA;">
+  <div class="container">
+    <h2 class="text-center mb-5">What We&nbsp;Do</h2>
+    <div class="row g-4">
+      <!-- Salvage‑to‑Rebuilt -->
+      <div class="col-12 col-md-6 d-flex">
+        <div class="me-3 flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+             style="width:64px;height:64px;background:#EF8B3B;">
+          <img src="{{ url_for('static', filename='icons/initiatives/salvage.png') }}"
+               alt="Salvage program icon" style="width:36px;height:36px;">
+        </div>
+        <div>
+          <h6 class="fw-bold mb-1">Salvage‑to‑Rebuilt Vehicle Programs</h6>
+          <p class="small mb-0">Research &amp; education that turn salvage‑title cars into DMV‑certified, road‑safe vehicles.</p>
+        </div>
+      </div>
+      <!-- Mobility Education -->
+      <div class="col-12 col-md-6 d-flex">
+        <div class="me-3 flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+             style="width:64px;height:64px;background:#313F81;">
+          <img src="{{ url_for('static', filename='icons/initiatives/education.png') }}"
+               alt="Education icon" style="width:36px;height:36px;">
+        </div>
+        <div>
+          <h6 class="fw-bold mb-1">Mobility Education &amp; Outreach</h6>
+          <p class="small mb-0">Open‑access toolkits, guides, and workshops that demystify vehicle ownership for vulnerable populations.</p>
+        </div>
+      </div>
+      <!-- Workforce Development -->
+      <div class="col-12 col-md-6 d-flex">
+        <div class="me-3 flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+             style="width:64px;height:64px;background:#313F81;">
+          <img src="{{ url_for('static', filename='icons/initiatives/workforce.png') }}"
+               alt="Workforce icon" style="width:36px;height:36px;">
+        </div>
+        <div>
+          <h6 class="fw-bold mb-1">Workforce Development &amp; STEM</h6>
+          <p class="small mb-0">Partnering with colleges &amp; vocational schools to train the next generation of ESG‑minded auto technicians.</p>
+        </div>
+      </div>
+      <!-- Environmental Advocacy -->
+      <div class="col-12 col-md-6 d-flex">
+        <div class="me-3 flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+             style="width:64px;height:64px;background:#EF8B3B;">
+          <img src="{{ url_for('static', filename='icons/initiatives/environment.png') }}"
+               alt="Environment icon" style="width:36px;height:36px;">
+        </div>
+        <div>
+          <h6 class="fw-bold mb-1">Environmental Advocacy</h6>
+          <p class="small mb-0">Driving circular‑economy policy and reducing automotive waste through sustainable reuse models.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -90,9 +154,9 @@
 
     <div class="row g-4 justify-content-center">
       {% set people = [
-        ('ceo.jpg','Alex Nguyen','Chief Executive Officer'),
-        ('coo.jpg','Maria Rossi','Chief Operating Officer'),
-        ('cdo.jpg','Luis Martínez','Director, Donor Relations')
+        ('cto.jpg','Dmitri Zhou','Chief Technology Officer'),
+        ('ceo.jpg','Cecilia Cao','Chief Executive Officer'),
+        ('cdo.jpg','Zhang San','Director, Donor Relations')
       ] %}
       {% for photo, name, title in people %}
         <div class="col-6 col-md-4 col-lg-3 text-center">
