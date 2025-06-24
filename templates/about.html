@@ -13,11 +13,15 @@
   <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative"
        style="z-index:2;">
       <h1 class="display-5 fw-bold text-white mb-2">Driven by Purpose, Fueled by Community</h1>
-      <p class="lead text-white-50 text-center w-75 mx-auto">
-        AutoSeek is a 501(c)(3) nonprofit on a mission to make reliable
+      <p style="color: #ffffff;" class="lead text-center w-75 mx-auto">
+        AutoSeek is a 501(c)(3) <span style="font-weight: 600; color: #EF8B3B;">nonprofit</span> on a mission to make reliable
         transportation affordable for everyone—while reinvesting every dollar back into the
         communities we serve.
       </p>
+      <img src="{{ url_for('static', filename='icons/nonprofit.png') }}"
+           alt="Non‑profit badge"
+           style="position:absolute; bottom:10%; left:50%; transform:translateX(-50%);
+                  width:160px; height:auto;">
   </div>
 </header>
 
