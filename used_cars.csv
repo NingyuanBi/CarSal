@@ -1,8 +1,8 @@
 brand,model,year,mileage,price,color,location,image
 Toyota,RAV4,2022,136451,13991,Silver,New York,toyota_rav4_2022.jpg
-Ford,Escape,2017,47171,7765,Red,Chicago,ford_escape_2017.jpg
+Ford,Escape,2017,47171,17765,Red,Chicago,ford_escape_2017.jpg
 Hyundai,Elantra,2018,96182,12616,White,Chicago,hyundai_elantra_2018.jpg
-Nissan,Sentra,2012,104518,5469,Silver,New York,nissan_sentra_2012.jpg
+Nissan,Sentra,2012,104518,15469,Silver,New York,nissan_sentra_2012.jpg
 Hyundai,Tucson,2022,44438,18221,Gray,Los Angeles,hyundai_tucson_2022.jpg
 Ford,Fusion,2014,104818,17539,Blue,Phoenix,ford_fusion_2014.jpg
 Chevrolet,Equinox,2017,145898,19454,Red,Phoenix,chevrolet_equinox_2017.jpg
@@ -16,7 +16,7 @@ BMW,X3,2017,136742,27415,Gray,New York,bmw_x3_2017.jpg
 Kia,Forte,2010,114464,20486,Black,Chicago,kia_forte_2010.jpg
 Chevrolet,Cruze,2017,38131,26231,Red,New York,chevrolet_cruze_2017.jpg
 Nissan,Rogue,2022,141952,29032,Blue,Phoenix,nissan_rogue_2022.jpg
-Honda,Civic,2014,118438,5118,Gray,New York,honda_civic_2014.jpg
+Honda,Civic,2014,118438,15118,Gray,New York,honda_civic_2014.jpg
 Toyota,RAV4,2011,135224,13395,Red,Phoenix,toyota_rav4_2011.jpg
 BMW,X3,2011,118845,24396,Red,Phoenix,bmw_x3_2011.jpg
 Hyundai,Sonata,2010,75555,20679,Gray,Chicago,hyundai_sonata_2010.jpg
@@ -28,23 +28,23 @@ Ford,Fusion,2015,107419,21177,White,Phoenix,ford_fusion_2015.jpg
 Honda,CR-V,2020,149756,18998,White,Los Angeles,honda_cr-v_2020.jpg
 Nissan,Rogue,2012,54504,24453,Silver,Phoenix,nissan_rogue_2012.jpg
 Chevrolet,Malibu,2016,60134,12620,Silver,Phoenix,chevrolet_malibu_2016.jpg
-Hyundai,Elantra,2017,135774,5496,Black,Chicago,hyundai_elantra_2017.jpg
-Ford,Escape,2012,89383,7206,Silver,Chicago,ford_escape_2012.jpg
+Hyundai,Elantra,2017,135774,15469,Black,Chicago,hyundai_elantra_2017.jpg
+Ford,Escape,2012,89383,17206,Silver,Chicago,ford_escape_2012.jpg
 Honda,CR-V,2010,102619,24003,Black,Houston,honda_cr-v_2010.jpg
 BMW,X3,2021,131093,18272,Gray,New York,bmw_x3_2021.jpg
-BMW,X5,2014,87370,8434,Blue,Phoenix,bmw_x5_2014.jpg
+BMW,X5,2014,87370,18434,Blue,Phoenix,bmw_x5_2014.jpg
 Kia,Sportage,2015,35177,18539,White,Houston,kia_sportage_2015.jpg
 Nissan,Altima,2012,138084,28244,White,Houston,nissan_altima_2012.jpg
 Kia,Sportage,2022,137156,16652,Silver,Chicago,kia_sportage_2022.jpg
 Honda,Accord,2015,84953,13433,Gray,Chicago,honda_accord_2015.jpg
-BMW,X3,2016,52317,6428,Gray,Los Angeles,bmw_x3_2016.jpg
+BMW,X3,2016,52317,16428,Gray,Los Angeles,bmw_x3_2016.jpg
 Nissan,Altima,2010,135486,23217,Gray,Phoenix,nissan_altima_2010.jpg
 Ford,Escape,2017,44217,14840,Gray,Los Angeles,ford_escape_2017.jpg
 BMW,X5,2016,41939,27921,White,New York,bmw_x5_2016.jpg
 Nissan,Rogue,2019,54567,15778,White,Los Angeles,nissan_rogue_2019.jpg
 Ford,Escape,2015,60858,18274,White,New York,ford_escape_2015.jpg
 BMW,320i,2013,121188,15802,Gray,New York,bmw_320i_2013.jpg
-Hyundai,Tucson,2013,123618,7153,Blue,Chicago,hyundai_tucson_2013.jpg
+Hyundai,Tucson,2013,123618,17153,Blue,Chicago,hyundai_tucson_2013.jpg
 Toyota,RAV4,2015,49294,22721,Black,New York,toyota_rav4_2015.jpg
 Nissan,Altima,2017,64402,20703,Silver,New York,nissan_altima_2017.jpg
 BMW,X3,2014,124183,24199,Silver,Houston,bmw_x3_2014.jpg
